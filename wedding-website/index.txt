@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Downes Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #faf8f3;
+            --sage: #a8b5a0;
+            --terracotta: #d4a59a;
+            --charcoal: #3a3a3a;
+            --gold: #c9a961;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--gold);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f5f3ed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 6rem;
+            font-weight: 400;
+            color: #c9a961;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+        
+        .hero h1 .the {
+            font-size: 3rem;
+            display: block;
+            font-style: italic;
+        }
+        
+        .hero h1 .wedding {
+            font-size: 6.5rem;
+            display: block;
+        }
+        
+        .hero h1 .of {
+            font-size: 2.5rem;
+            display: block;
+            font-style: italic;
+        }
+
+        .hero .date {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: #c9a961;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .hero .names {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: #c9a961;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin: 2rem 0;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .hero .names .and {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            text-transform: lowercase;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            color: #c9a961;
+            font-size: 2rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(250, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--gold);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .detail-card:nth-child(3) {
+            grid-column: 1 / -1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 150px 150px 0 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 3px solid var(--gold);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .detail-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-align: center;
+        }
+
+        .detail-card p {
+            line-height: 1.6;
+            color: var(--gold);
+        }
+
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--cream);
+            background: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+
+        button {
+            background: var(--sage);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background: var(--terracotta);
+            transform: translateY(-2px);
+        }
+
+        .travel-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .travel-item {
+            background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+            padding: 2rem;
+            border-left: 4px solid var(--terracotta);
+        }
+
+        .travel-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .registry-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .registry-btn {
+            background: var(--white);
+            color: var(--gold);
+            padding: 1.5rem 3rem;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid var(--gold);
+            transition: all 0.3s;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .registry-btn:hover {
+            background: var(--gold);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1.5rem;
+            padding: 2rem;
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s;
+        }
+
+        .faq-item:hover {
+            transform: translateX(10px);
+        }
+
+        .faq-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
+        }
+
+        footer {
+            background: var(--white);
+            color: var(--gold);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 .wedding {
+                font-size: 4rem;
+            }
+            
+            .hero h1 .the {
+                font-size: 2rem;
+            }
+            
+            .hero h1 .of {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="the">The</span>
+                <span class="wedding">Wedding</span>
+                <span class="of">of</span>
+            </h1>
+            <p class="names">BIANCA<br><span class="and">and</span><br>SONNY</p>
+            <p class="date">Sunday 9th August 2026</p>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </div>
+
+    <nav>
+        <a href="#details">Details</a>
+        <a href="#rsvp">RSVP</a>
+        <a href="#travel">Travel</a>
+        <a href="#registry">Registry</a>
+        <a href="#faq">FAQs</a>
+    </nav>
+
+    <section id="details">
+        <h2>Wedding Details</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>Ceremony</h3>
+                <p><strong>Date:</strong><br>Sunday 9th August 2026</p>
+                <p><strong>Time:</strong><br>3pm arrival</p>
+                <p><strong>Location:</strong><br>Braxted Park Estate,<br>CM8 3EN</p>
+            </div>
+            <div class="detail-card">
+                <h3>Dress Code</h3>
+                <p><strong>Women:</strong><br>Evening Dresses or Ball Gowns</p>
+                <p><strong>Men:</strong><br>Lounge Suits (Tie Optional)</p>
+            </div>
+            <div class="detail-card">
+                <h3>Schedule</h3>
+                <p><strong>3:00 PM</strong> - Arrival</p>
+                <p><strong>3:30 PM</strong> - Chuppah</p>
+                <p><strong>4:30 PM</strong> - Canapés & Drinks</p>
+                <p><strong>6:00 PM</strong> - Dinner, Open Bar and Dancing</p>
+                <p><strong>11:30 PM</strong> - Carriages</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rsvp">
+        <h2>RSVP</h2>
+        <div class="rsvp-form">
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: var(--gold);">Please fill out the form to let us know you'll be joining us!</p>
+            <div style="text-align: center;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfVZOJtz57ajVpmTvICLKOsgckIGtdYMksO4HhMetu_tgRYFA/viewform" target="_blank" style="background: var(--gold); color: var(--white); padding: 1.5rem 3rem; text-decoration: none; display: inline-block; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: all 0.3s; border: none; font-family: 'Montserrat', sans-serif;">Click Here to RSVP</a>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--gold); opacity: 0.8;">The form will open in a new tab</p>
+        </div>
+    </section>
+
+    <section id="travel">
+        <h2>Travel & Accommodations</h2>
+        <div class="travel-grid">
+            <div class="travel-item">
+                <h4>Nearby Hotels</h4>
+                <p><strong>Blue Anchor, Feering</strong><br>
+                <a href="tel:01376571783" style="color: var(--gold); text-decoration: underline;">01376 571783</a><br>
+                <a href="mailto:info@theblueanchorfeering.co.uk" style="color: var(--gold); text-decoration: underline;">info@theblueanchorfeering.co.uk</a><br>
+                <a href="https://www.theblueanchorfeering.co.uk" target="_blank" style="color: var(--gold); text-decoration: underline;">www.theblueanchorfeering.co.uk</a><br>
+                <strong>Distance from Braxted Park Estate</strong> - 4.3 miles (7 minutes)</p>
+                
+                <p style="margin-top: 1.5rem;"><strong>Le Bouchon Brasserie and Hotel, Maldon</strong><br>
+                <a href="tel:01621856511" style="color: var(--gold); text-decoration: underline;">01621 856511</a><br>
+                <a href="mailto:enquiries@lebouchon.co.uk" style="color: var(--gold); text-decoration: underline;">enquiries@lebouchon.co.uk</a><br>
+                <a href="https://www.lebouchon.co.uk" target="_blank" style="color: var(--gold); text-decoration: underline;">www.lebouchon.co.uk</a><br>
+                <strong>Distance from Braxted Park Estate</strong> - 5.3 miles (11 minutes)</p>
+                
+                <p style="margin-top: 1.5rem;"><strong>Premier Inn, Braintree</strong><br>
+                <a href="tel:03337773941" style="color: var(--gold); text-decoration: underline;">0333 777 3941</a><br>
+                <a href="https://www.premierinn.com/essex/braintree" target="_blank" style="color: var(--gold); text-decoration: underline;">www.premierinn.com/essex/braintree</a><br>
+                <strong>Distance from Braxted Park Estate</strong> - 7.9 miles (17 minutes)</p>
+                
+                <p style="margin-top: 1.5rem;"><strong>The Marks Tey Hotel, Colchester</strong><br>
+                <a href="tel:01206210001" style="color: var(--gold); text-decoration: underline;">01206 210001</a><br>
+                <a href="mailto:info@marksteyhotel.co.uk" style="color: var(--gold); text-decoration: underline;">info@marksteyhotel.co.uk</a><br>
+                <a href="https://www.marksteyhotel.co.uk" target="_blank" style="color: var(--gold); text-decoration: underline;">www.marksteyhotel.co.uk</a><br>
+                <strong>Distance from Braxted Park Estate</strong> - 8.9 miles (13 minutes)</p>
+                
+                <p style="margin-top: 1.5rem;"><strong>The Lion Inn, Boreham</strong><br>
+                <a href="tel:01245394900" style="color: var(--gold); text-decoration: underline;">01245 394900</a><br>
+                <a href="mailto:info@lioninnhotel.co.uk" style="color: var(--gold); text-decoration: underline;">info@lioninnhotel.co.uk</a><br>
+                <a href="https://www.thelionhousechelmsford.co.uk" target="_blank" style="color: var(--gold); text-decoration: underline;">www.thelionhousechelmsford.co.uk</a><br>
+                <strong>Distance from Braxted Park Estate</strong> - 10.3 miles (12 minutes)</p>
+                
+                <p style="margin-top: 1.5rem;"><strong>Holiday Inn, Eight Ash Green, Colchester</strong><br>
+                <a href="tel:03333209326" style="color: var(--gold); text-decoration: underline;">03333 209 326</a><br>
+                <a href="https://www.hicolchesterhotel.co.uk" target="_blank" style="color: var(--gold); text-decoration: underline;">www.hicolchesterhotel.co.uk</a><br>
+                <strong>Distance from Braxted Park Estate</strong> - 11.4 miles (16 minutes)</p>
+            </div>
+            <div class="travel-item">
+                <h4>Taxi's</h4>
+                <p style="margin-top: 1rem;"><strong>Crusader Cab</strong><br><a href="tel:01376500555" style="color: var(--gold); text-decoration: underline;">01376 500555</a></p>
+                <p style="margin-top: 1rem;"><strong>Knights Taxi</strong><br><a href="tel:01376518383" style="color: var(--gold); text-decoration: underline;">01376 518383</a></p>
+                <p style="margin-top: 1rem;"><strong>Witham Taxi Service</strong><br><a href="tel:01376512808" style="color: var(--gold); text-decoration: underline;">01376512808</a></p>
+            </div>
+            <div class="travel-item">
+                <h4>Parking</h4>
+                <p>Parking is available, but we strongly encourage taxis, Ubers, and designated drivers. We'd much rather see you on the dance floor than behind the wheel!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="registry">
+        <h2>Registry</h2>
+        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin-left: auto; margin-right: auto;">Our home is full, and so are our hearts,<br>
+So gifts aren't needed as we start this new part.<br>
+What we'd love most are memories to make,<br>
+As we finally escape on our honeymoon break.<br>
+If you'd like to help us along the way,<br>
+A little towards our trip would truly make our day.</p>
+        <p style="text-align: center; font-weight: bold; font-size: 1.1rem; line-height: 1.6; margin-top: 2rem;">S & B Downes<br>
+69232725<br>
+60-02-39</p>
+    </section>
+
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h4>Is the wedding indoors or outdoors?</h4>
+                <p>The ceremony will be outdoors (weather permitting) with an indoor backup option. The reception will be outdoors too weather permitted. Good news - heel stoppers will be provided!</p>
+            </div>
+            <div class="faq-item">
+                <h4>What if I have dietary restrictions?</h4>
+                <p>Please let us know in the RSVP form, and we'll make sure our caterers accommodate your needs.</p>
+            </div>
+            <div class="faq-item">
+                <h4>When is the RSVP deadline?</h4>
+                <p>Please RSVP by Monday 1st June 2026.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>We can't wait to celebrate with you!</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(40px)';
+            section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
